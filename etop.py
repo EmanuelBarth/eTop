@@ -46,7 +46,7 @@ print('\n\nID\t|s_std\ts_fat\tb_std\tb_fat\tGp100\tGv100\tuser name')   #These t
 print('--\t|-----\t-----\t-----\t-----\t-----\t-----\t---------')
 
 for usr in sorted(currUsers):
-    print(f"{usr}", end='\t|')
+    print(f"{usr[:7]}", end='\t|')
     for par in ['s_standard', 's_fat', 'b_standard', 'b_fat', 'gpu_p100', 'gpu_v100']:
         print(f"{currUsers[usr][par]['run'] if currUsers[usr][par]['run'] != 0 else '-'}", end='')
         if currUsers[usr][par]['pen'] != 0:
