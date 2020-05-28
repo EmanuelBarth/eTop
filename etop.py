@@ -54,7 +54,7 @@ def report_usage():
                             currUsers_multi_partitions[nil[3]][i]['pen'] += nodes
                 partition[nil[1]]['pen'] += nodes
 
-    out_multiline += '\n\n¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯\n'
+    out_multiline += '\n\n\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/\n'
     out_multiline += f'{time.asctime()}\n'
     out_multiline += 'partition\trunning\tpending\n'.expandtabs(22)  #expandtabs provides much better handling of strings with unequal length
     out_multiline += '---------\t-------\t-------\n'.expandtabs(22)
@@ -85,18 +85,19 @@ def report_usage():
                     out += f"({currUsers[usr][par]['pen']}*)\t"
                     multi_partitions = True
 
-        out += f"{araUsers.get(usr, usr)[:20]:<20}\n"     #Cut user names to 20 characters, for style reasons
+        out += f"{araUsers.get(usr, usr)[:16]:<16}\n"     #Cut user names to 17 characters, for style reasons
         out_multiline += out.expandtabs(9)         #Cut user names to 20 characters, for style reason
 
     if multi_partitions:
         out_multiline += "* job pending on multiple partitions\n"
-    out_multiline += '\n¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯\n\n'
+    out_multiline += '\n\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/¯¯\_(ツ)_/\n\n'
 
     stdscr.addstr(out_multiline)
     return out_multiline
 
 if __name__ == "__main__":
     stdscr = curses.initscr()
+    curses.resizeterm(100, 100)
     curses.noecho()
     curses.cbreak()
 
